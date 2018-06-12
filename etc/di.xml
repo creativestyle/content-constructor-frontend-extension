@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Creativestyle\ContentConstructor\View\TemplateLocator" type="Creativestyle\ContentConstructorFrontendExtension\Template\Locator" />
+
+    <preference for="Creativestyle\ContentConstructor\Service\MediaResolver" type="Creativestyle\ContentConstructorFrontendExtension\Service\MediaResolver" />
+
+    <preference for="Creativestyle\ContentConstructor\Service\UrlResolver" type="Creativestyle\ContentConstructorFrontendExtension\Service\UrlResolver" />
+
+    <preference for="Creativestyle\ContentConstructor\View\Template" type="Creativestyle\ContentConstructorFrontendExtension\Template\Twig" />
+
+    <preference for="Creativestyle\ContentConstructor\Factory\ComponentFactory" type="Creativestyle\ContentConstructorFrontendExtension\Service\ComponentFactory" />
+
+    <preference for="Creativestyle\ContentConstructor\ComponentSupport"
+                type="\Creativestyle\ContentConstructorFrontendExtension\Config\DefaultComponentSupport" />
+
+    <preference for="Creativestyle\ContentConstructor\Components\Navigation\DataProvider"
+                type="Creativestyle\ContentConstructorFrontendExtension\DataProviders\NavigationDataProvider" />
+
+    <preference for="Creativestyle\ContentConstructor\Components\ProductCarousel\DataProvider"
+                type="Creativestyle\ContentConstructorFrontendExtension\DataProviders\ProductCarouselDataProvider" />
+
+    <preference for="Creativestyle\ContentConstructorFrontendExtension\DataProviders\AdditionalProductDataProvider"
+                type="Creativestyle\ContentConstructorFrontendExtension\DataProviders\EmptyAdditionalProductDataProvider" />
+
+    <preference for="Creativestyle\ContentConstructor\Components\BrandCarousel\DataProvider"
+                type="Creativestyle\ContentConstructorFrontendExtension\DataProviders\BrandDataProvider" />
+
+    <preference for="Creativestyle\ContentConstructor\Components\CategoryLinks\DataProvider"
+                type="Creativestyle\ContentConstructorFrontendExtension\DataProviders\CategoryLinksDataProvider" />
+
+    <preference for="Creativestyle\ContentConstructor\Components\Button\DataProvider"
+                type="Creativestyle\ContentConstructorFrontendExtension\DataProviders\ButtonDataProvider" />
+
+    <preference for="Creativestyle\ContentConstructor\Components\CmsTeaser\DataProvider"
+                type="Creativestyle\ContentConstructorFrontendExtension\DataProviders\CmsTeaserDataProvider" />
+
+    <type name="Magento\Catalog\Block\Product\AbstractProduct">
+        <plugin name="creativestyle_add_product_object_to_image_data_array" type="Creativestyle\ContentConstructorFrontendExtension\Model\Plugin\ProductImage"/>
+    </type>
+    <type name="Magento\Catalog\Block\Product\AbstractProduct">
+        <plugin name="add_product_object_to_image_data_array" type="Smile\ElasticsuiteSwatches\Model\Plugin\ProductImage" disabled="true"/>
+    </type>
+    <type name="Magento\Catalog\Block\Product\AbstractProduct">
+        <plugin name="add_product_object_to_image_data_array" type="Magento\Swatches\Model\Plugin\ProductImage" disabled="true"/>
+    </type>
+
+    <type name="Creativestyle\ContentConstructorFrontendExtension\Model\Plugin\ProductImage">
+        <arguments>
+            <argument name="swatchesHelperData" xsi:type="object">Smile\ElasticsuiteSwatches\Helper\Swatches</argument>
+        </arguments>
+    </type>
+
+    <type name="\Creativestyle\ContentConstructorFrontendExtension\Model\Filter\Pool">
+        <arguments>
+            <argument name="filters" xsi:type="array">
+                <item name="new_products" xsi:type="object">Creativestyle\ContentConstructorFrontendExtension\Model\Filter\NewProducts</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

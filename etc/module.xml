@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Module/etc/module.xsd">
+    <module name="Creativestyle_ContentConstructorFrontendExtension" setup_version="0.0.7">
+        <sequence>
+            <module name="Magento_Cms"/>
+            <module name="Creativestyle_FrontendExtension" />
+            <module name="Magento_Swatches"/>
+            <module name="Smile_ElasticsuiteSwatches"/>
+        </sequence>
+    </module>
+</config>
